@@ -32,5 +32,6 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.redirect(result.data.redirect_url);
+  // 303 把同意表单的 POST 改成 GET。默认 307 会把表单原样 POST 到客户端回调，回调只接受 GET。
+  return NextResponse.redirect(result.data.redirect_url, 303);
 }
