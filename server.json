@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "cn.fangjia/housing-filings",
+  "title": "杭州商品住房备案价",
+  "description": "查询杭州市住保房管局公开的商品住房一房一价备案记录。价格是备案总价，可按预售证号检索和汇总。",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/Qquanwei/fangjia_mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://YOUR_DEPLOYMENT.vercel.app/mcp"
+    }
+  ]
+}
