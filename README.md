@@ -12,9 +12,11 @@ Agent 只访问本服务的 `/mcp`。浙江政务网关的密钥留在服务端�
 
 ## 准备
 
-1. 在 Supabase 执行 `supabase/migrations/20261026160000_housing_filings.sql`。
-2. 复制 `.env.example` 为 `.env.local`，填入 `SUPABASE_URL` 和 `SUPABASE_SERVICE_ROLE_KEY`。
-3. 在杭州数据开放平台申请接口 `331111zjhzFN3mq20201024152710137829SynReq`，把 `HZ_APP_SECRET` 或 `HZ_USER_SECRET` 写入环境变量。未获批时网关返回「没有此资源的权限，请申请」。
+Supabase 由 Vercel Marketplace 接入，环境变量会写进 Production、Preview 和 Development。`supabase/migrations` 里的新 SQL 在推送到 `main` 后由 GitHub Actions 自动执行。
+
+本地开发可以执行 `npx vercel env pull .env.local --environment development`。
+
+杭州数据接口 `331111zjhzFN3mq20201024152710137829SynReq` 仍需在开放平台申请。通过后把 `HZ_APP_SECRET` 或 `HZ_USER_SECRET` 写入 Vercel 环境变量。未获批时网关返回「没有此资源的权限，请申请」。
 
 ## 命令
 
