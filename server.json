@@ -11,7 +11,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://YOUR_DEPLOYMENT.vercel.app/mcp"
+      "url": "https://fangjia-mcp.vercel.app/mcp"
     }
   ]
 }
