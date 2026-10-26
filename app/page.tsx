@@ -6,7 +6,7 @@ const cursorConfig = `{
   "mcpServers": {
     "fangjia": {
       "type": "http",
-      "url": "https://你的域名.vercel.app/mcp"
+      "url": "https://fangjia-mcp.vercel.app/mcp"
     }
   }
 }`;
@@ -66,7 +66,8 @@ export default async function Home() {
           <code>{cursorConfig}</code>
         </pre>
         <p className="text-sm leading-6 text-zinc-500">
-          本地调试把地址换成 <code>http://localhost:3000/mcp</code>。接口说明见{" "}
+          第一次连接会打开浏览器，需要用 Google 或邮箱登录并允许访问。本地调试把地址换成{" "}
+          <code>http://localhost:3000/mcp</code>。接口说明见{" "}
           <a className="underline" href={status.apiPage}>
             杭州市数据开放平台
           </a>

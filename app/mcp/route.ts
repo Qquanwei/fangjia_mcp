@@ -1,4 +1,5 @@
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
+import { requireMcpUser } from "@/lib/mcp-auth";
 import { createMcpServer } from "@/lib/mcp-server";
 
 export const runtime = "nodejs";
@@ -9,7 +10,7 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
   "Access-Control-Allow-Headers":
     "Content-Type, mcp-session-id, mcp-protocol-version, Last-Event-ID, Authorization",
-  "Access-Control-Expose-Headers": "mcp-session-id, mcp-protocol-version",
+  "Access-Control-Expose-Headers": "WWW-Authenticate, mcp-session-id, mcp-protocol-version",
 };
 
 function withCors(response: Response) {
@@ -23,6 +24,9 @@ function withCors(response: Response) {
 }
 
 async function handle(request: Request) {
+  const auth = await requireMcpUser(request);
+  if (auth.response) return withCors(auth.response);
+
   const transport = new WebStandardStreamableHTTPServerTransport({
     enableJsonResponse: true,
   });
